@@ -17,15 +17,35 @@ class QuizView extends StatefulWidget {
   State<QuizView> createState() => _QuizViewState();
 }
 
-class _QuizViewState extends State<QuizView> {
+class _QuizViewState extends State<QuizView>
+    with SingleTickerProviderStateMixin {
   int currentQuestionIndex = 0;
   int correctAnswers = 0;
 
-  String get quizName => widget.args.quiz.name;
-  List<Question> get questions => widget.args.quiz.questions;
-  int get questionsLength => questions.length;
+  late final List<Question> questions;
 
+  String get quizName => widget.args.quiz.name;
+  int get questionsLength => questions.length;
   Question get currentQuestion => questions[currentQuestionIndex];
+
+  late final AnimationController controller;
+
+  @override
+  void initState() {
+    super.initState();
+    questions = widget.args.quiz.getQuestions();
+
+    controller = AnimationController(
+      vsync: this,
+      duration: const Duration(milliseconds: 500),
+    );
+  }
+
+  @override
+  void dispose() {
+    controller.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -98,9 +118,14 @@ class _QuizViewState extends State<QuizView> {
                 ],
               ),
             ),
-            // TODO: animated progress value
-            LinearProgressIndicator(
-              value: currentQuestionIndex / questionsLength,
+            AnimatedBuilder(
+              animation: controller,
+              builder: (context, _) {
+                return LinearProgressIndicator(
+                  minHeight: 16.0,
+                  value: controller.value,
+                );
+              },
             ),
           ],
         ),
@@ -111,19 +136,23 @@ class _QuizViewState extends State<QuizView> {
   void submitAnswer(bool answer) {
     if (answer == currentQuestion.answer) correctAnswers++;
 
-    if (currentQuestionIndex >= questions.length - 1) {
-      Navigator.popAndPushNamed(
-        context,
-        ResultsView.routeName,
-        arguments: ResultsViewArguments(
-          quiz: widget.args.quiz,
-          correctAnswers: correctAnswers,
-        ),
-      );
-    } else {
-      setState(() {
-        currentQuestionIndex++;
+    if (currentQuestionIndex == questions.length - 1) {
+      Future.delayed(const Duration(milliseconds: 500), () {
+        Navigator.popAndPushNamed(
+          context,
+          ResultsView.routeName,
+          arguments: ResultsViewArguments(
+            quiz: widget.args.quiz,
+            correctAnswers: correctAnswers,
+          ),
+        );
       });
+
+      currentQuestionIndex++;
+    } else if (currentQuestionIndex < questions.length - 1) {
+      setState(() => currentQuestionIndex++);
     }
+
+    controller.animateTo(currentQuestionIndex / questionsLength);
   }
 }
