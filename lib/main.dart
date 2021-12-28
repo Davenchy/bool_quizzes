@@ -1,12 +1,7 @@
-
-
 import 'package:flutter/material.dart';
 
-import 'package:workstationmode/src/approot.dart';
-void main()
-{
+import 'src/app.dart';
 
-  runApp(AppRoot());
-
-
+void main() {
+  runApp(const AppRoot());
 }

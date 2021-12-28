@@ -1,4 +1,4 @@
-import 'package:workstationmode/utils/question.dart';
+import 'question.dart';
 
 const Map<String, List<Question>> kQuestions = {
   'type1': [

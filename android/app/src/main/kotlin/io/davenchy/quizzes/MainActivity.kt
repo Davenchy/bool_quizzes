@@ -1,4 +1,4 @@
-package com.example.workstationmode
+package io.davenchy.quizzes
 
 import io.flutter.embedding.android.FlutterActivity
 

@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:workstationmode/components/custom_buttom.dart';
-import 'package:workstationmode/views/sec_view.dart';
 
-class HomeViews extends StatelessWidget {
-  const HomeViews({Key? key}) : super(key: key);
+import '../components/custom_button.dart';
+
+class HomeView extends StatelessWidget {
+  const HomeView({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -12,10 +12,10 @@ class HomeViews extends StatelessWidget {
       body: Center(
         child: Column(
           children: [
-            Text(
-              'Quizes',
+            const Text(
+              'Quizzes',
             ),
-            Text('select quistion type'),
+            const Text('Select question type'),
             FutureBuilder<SharedPreferences>(
               future: SharedPreferences.getInstance(),
               builder: (context, snapshot) {

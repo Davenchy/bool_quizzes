@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:workstationmode/components/custom_buttom.dart';
-import 'package:workstationmode/views/first_view.dart';
-import 'package:workstationmode/views/result.dart';
-import 'package:workstationmode/views/sec_view.dart';
+
+import '../views/home_view.dart';
+import '../views/results_view.dart';
+import '../views/quiz_view.dart';
 
 class AppRoot extends StatelessWidget {
+  const AppRoot({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -13,17 +15,17 @@ class AppRoot extends StatelessWidget {
         switch (settings.name) {
           case '/':
             return MaterialPageRoute(
-              builder: (context) => HomeViews(),
+              builder: (context) => const HomeView(),
             );
           case '/questions':
             return MaterialPageRoute(
-              builder: (context) => SecondView(
+              builder: (context) => QuizView(
                 questionsType: settings.arguments as String,
               ),
             );
           case '/results':
             return MaterialPageRoute(
-              builder: (context) => Result(
+              builder: (context) => ResultsView(
                 arguments: settings.arguments as List<int>,
               ),
             );

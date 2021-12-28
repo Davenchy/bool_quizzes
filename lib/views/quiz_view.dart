@@ -1,19 +1,19 @@
 import 'package:flutter/material.dart';
-import 'package:workstationmode/components/custom_buttom.dart';
-import 'package:workstationmode/utils/question.dart';
-import 'package:workstationmode/utils/questions.dart';
-import 'package:workstationmode/views/result.dart';
 
-class SecondView extends StatefulWidget {
-  const SecondView({Key? key, required this.questionsType}) : super(key: key);
+import '../components/custom_button.dart';
+import '../utils/question.dart';
+import '../utils/questions.dart';
+
+class QuizView extends StatefulWidget {
+  const QuizView({Key? key, required this.questionsType}) : super(key: key);
 
   final String questionsType;
 
   @override
-  State<SecondView> createState() => _SecondViewState();
+  State<QuizView> createState() => _QuizViewState();
 }
 
-class _SecondViewState extends State<SecondView> {
+class _QuizViewState extends State<QuizView> {
   int currentQuestionIndex = 0;
   int correctAnswers = 0;
 

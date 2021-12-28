@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:workstationmode/components/custom_buttom.dart';
 
-import 'first_view.dart';
+import '../components/custom_button.dart';
 
-class Result extends StatelessWidget {
-  const Result({Key? key, required this.arguments}) : super(key: key);
+class ResultsView extends StatelessWidget {
+  const ResultsView({Key? key, required this.arguments}) : super(key: key);
 
   final List<int> arguments;
 
@@ -18,18 +17,21 @@ class Result extends StatelessWidget {
           children: [
             Text(
               'you answered ${arguments[0]} questions out of ${arguments[1]}\nYour score is ${arguments[0] / arguments[1] * 100}%',
-              style: TextStyle(fontSize: 24),
+              style: const TextStyle(fontSize: 24),
             ),
+            // TODO: implement show last score if exists
             // Divider(),
             // Text(
             //   'Last Score is Z',
             //   style: TextStyle(fontSize: 20),
             // ),
-            CustomButton(label: 'Home', onPressed: () async {
-              final prefs = await SharedPreferences.getInstance();
-              await prefs.setDouble('score', arguments[0] / arguments[1]);
-              Navigator.pushNamed(context, '/');
-            }),
+            CustomButton(
+                label: 'Home',
+                onPressed: () async {
+                  final prefs = await SharedPreferences.getInstance();
+                  await prefs.setDouble('score', arguments[0] / arguments[1]);
+                  Navigator.pushNamed(context, '/');
+                }),
           ],
         ),
       ),
