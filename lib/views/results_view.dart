@@ -37,7 +37,6 @@ class ResultsView extends StatelessWidget {
                 text: TextSpan(
                   style: const TextStyle(
                     fontSize: 24.0,
-                    color: Colors.black,
                   ),
                   children: [
                     const TextSpan(
@@ -71,7 +70,6 @@ class ResultsView extends StatelessWidget {
                         text: TextSpan(
                           style: const TextStyle(
                             fontSize: 24.0,
-                            color: Colors.black,
                           ),
                           children: [
                             const TextSpan(
@@ -79,8 +77,9 @@ class ResultsView extends StatelessWidget {
                             ),
                             TextSpan(
                               text: '$score%',
-                              style:
-                                  const TextStyle(fontWeight: FontWeight.bold),
+                              style: const TextStyle(
+                                fontWeight: FontWeight.bold,
+                              ),
                             ),
                           ],
                         ),

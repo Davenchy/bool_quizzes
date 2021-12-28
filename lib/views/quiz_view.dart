@@ -86,7 +86,7 @@ class _QuizViewState extends State<QuizView>
                   style: const TextStyle(
                     fontSize: 18,
                     fontWeight: FontWeight.bold,
-                    color: Colors.grey,
+                    color: Colors.white70,
                   ),
                 ),
               ],
@@ -153,6 +153,10 @@ class _QuizViewState extends State<QuizView>
       setState(() => currentQuestionIndex++);
     }
 
-    controller.animateTo(currentQuestionIndex / questionsLength);
+    controller.animateTo(
+      currentQuestionIndex / questionsLength,
+      duration: const Duration(milliseconds: 500),
+      curve: Curves.easeInOut,
+    );
   }
 }

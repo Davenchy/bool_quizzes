@@ -13,6 +13,9 @@ class AppRoot extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
+      theme: ThemeData.dark().copyWith(
+        primaryColor: Colors.blue,
+      ),
       onGenerateRoute: (settings) {
         switch (settings.name) {
           case '/':
