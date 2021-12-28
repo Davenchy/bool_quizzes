@@ -1,9 +1,11 @@
+import '../../utils/quiz.dart';
+
 class ResultsViewArguments {
   const ResultsViewArguments({
+    required this.quiz,
     required this.correctAnswers,
-    required this.totalAnswers,
   });
 
+  final Quiz quiz;
   final int correctAnswers;
-  final int totalAnswers;
 }

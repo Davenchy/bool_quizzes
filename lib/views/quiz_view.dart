@@ -23,7 +23,7 @@ class _QuizViewState extends State<QuizView> {
 
   String get quizName => widget.args.quiz.name;
   List<Question> get questions => widget.args.quiz.questions;
-  int get questionsLength => widget.args.quiz.totalQuestions;
+  int get questionsLength => questions.length;
 
   Question get currentQuestion => questions[currentQuestionIndex];
 
@@ -88,13 +88,11 @@ class _QuizViewState extends State<QuizView> {
                 children: [
                   CustomButton(
                     label: 'True',
-                    radius: size.width / 2,
                     onPressed: () => submitAnswer(true),
                   ),
                   const SizedBox(height: 32),
                   CustomButton(
                     label: 'False',
-                    radius: size.width / 2,
                     onPressed: () => submitAnswer(false),
                   ),
                 ],
@@ -118,8 +116,8 @@ class _QuizViewState extends State<QuizView> {
         context,
         ResultsView.routeName,
         arguments: ResultsViewArguments(
+          quiz: widget.args.quiz,
           correctAnswers: correctAnswers,
-          totalAnswers: questions.length,
         ),
       );
     } else {

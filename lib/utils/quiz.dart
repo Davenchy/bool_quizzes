@@ -8,6 +8,4 @@ class Quiz {
 
   final String name;
   final List<Question> questions;
-
-  int get totalQuestions => questions.length;
 }
