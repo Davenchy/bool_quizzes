@@ -25,10 +25,15 @@ class ResultsView extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               const Spacer(),
+              Text(
+                '${args.quiz.name} Quiz',
+                style: const TextStyle(fontSize: 32.0),
+              ),
+              const SizedBox(height: 80.0),
               const Text('Your score', style: TextStyle(fontSize: 24.0)),
               const SizedBox(height: 8.0),
               Text(
-                '$percentage%',
+                '${percentage.round()}%',
                 style: const TextStyle(
                     fontSize: 32.0, fontWeight: FontWeight.bold),
               ),

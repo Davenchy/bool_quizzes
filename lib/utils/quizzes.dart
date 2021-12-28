@@ -1,12 +1,14 @@
+import 'package:workstationmode/utils/quizzes/music.quiz.dart';
+
 import 'quiz.dart';
-import 'question.dart';
+
+import 'quizzes/algebra_quiz.dart';
+import 'quizzes/sports_quiz.dart';
+import 'quizzes/islamic_quiz.dart';
 
 const List<Quiz> kQuizzes = [
-  Quiz(
-    name: 'Quiz1',
-    questions: [
-      Question(text: 'this is question 1', answer: true),
-      Question(text: 'this is question 2', answer: true),
-    ],
-  ),
+  sportsQuiz,
+  islamicQuiz,
+  algebraQuiz,
+  musicQuiz,
 ];

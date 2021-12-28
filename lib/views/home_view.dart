@@ -39,15 +39,18 @@ class HomeView extends StatelessWidget {
                     itemCount: kQuizzes.length,
                     itemBuilder: (context, index) {
                       final quiz = kQuizzes[index];
-                      return CustomButton(
-                        label: quiz.name,
-                        onPressed: () {
-                          Navigator.pushNamed(
-                            context,
-                            QuizView.routeName,
-                            arguments: QuizViewArguments(quiz: quiz),
-                          );
-                        },
+                      return Padding(
+                        padding: const EdgeInsets.symmetric(vertical: 8.0),
+                        child: CustomButton(
+                          label: quiz.name,
+                          onPressed: () {
+                            Navigator.pushNamed(
+                              context,
+                              QuizView.routeName,
+                              arguments: QuizViewArguments(quiz: quiz),
+                            );
+                          },
+                        ),
                       );
                     },
                   ),
